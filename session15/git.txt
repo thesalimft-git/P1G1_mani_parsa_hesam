@@ -1,0 +1,11 @@
+git init ==> initial
+
+git status
+git add .
+git commit -m '...'
+
+git log --oneline
+git reset --hard HEAD
+
+git push
+git pull

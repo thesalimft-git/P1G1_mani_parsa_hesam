@@ -1,0 +1,9 @@
+H: p, PC:rH: p, PC:rH: p, PC:rH: p, PC:sH: p, PC:pH: p, 
+PC:pH: p, 
+PC:sH: p, PC:rH: 
+p, PC:pH: p, PC:sH: p, PC:p
+
+
+---------------
+pc: 10
+h: 15
