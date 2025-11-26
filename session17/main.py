@@ -20,19 +20,22 @@ with open('result.txt', 'w', encoding='utf-8') as f:
 
         for div_top in soup.find_all('div', class_="top"):
             for atag in div_top.find('a'):
-                # print(atag.text.strip())
-                teacher.append(atag.text.strip())
+                if atag.text.strip():
+                    teacher.append(atag.text.strip())
         
         
         for span_price in soup.find_all('span', class_="price"):
             for itag in span_price.find('i'):
-                print(itag.text)
                 course_price.append(itag.text)
 
+
+print('-------------------------------------')
 
 print('course_title: ', len(course_title))            
 print('teacher: ', len(teacher))            
 print('course_price: ', len(course_price))            
+
+print('-------------------------------------')
 
 
 
@@ -44,4 +47,5 @@ df = pd.DataFrame({
 })
 
 print(df)
+df.to_csv('session17/data.csv')
 
