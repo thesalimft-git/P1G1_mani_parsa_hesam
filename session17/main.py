@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import pandas
-
-
+import pandas as pd
 
 course_title = []
 teacher = []
@@ -35,3 +33,15 @@ with open('result.txt', 'w', encoding='utf-8') as f:
 print('course_title: ', len(course_title))            
 print('teacher: ', len(teacher))            
 print('course_price: ', len(course_price))            
+
+
+
+
+df = pd.DataFrame({
+    'title': course_title,
+    'teacher': teacher,
+    'price': course_price
+})
+
+print(df)
+
