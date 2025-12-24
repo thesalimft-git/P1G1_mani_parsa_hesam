@@ -4,10 +4,18 @@ class BankSystem:
     def __init__(self, accounts):
         self.accounts = accounts
     
-    def show_all_info(self):
-        print(self.accounts)
-        return
-    
+    def show_all_info(self, show_history = True):
+        if not self.accounts:
+            print('account is empty')
+            return
+            
+        for id, info in self.accounts.items():
+            print(f"{id}- {info.get('name')} ({info.get('balance')})")
+            
+            if show_history:
+                for item in info.get('history'):
+                    print('\t-', item)
+              
     def create_account(self, name:str, balance:str|float|int):
         try:
             balance = float(balance)
@@ -24,32 +32,44 @@ class BankSystem:
         }
         return True
 
-    def deposit(self, id:str, amount:float) -> bool:
+    def deposit(self, id:str, amount:float|str|int) -> str:
+        try:
+            amount = float(amount)
+        except:
+            return 'error: amount must be a number'
+       
         if id not in self.accounts:
-            return False
+            return 'error: just present id'
         
-        self.accounts[id]['balance'] += amount
-        
+        self.accounts[id]['balance'] += amount   
         
         current_time = datetime.now().strftime('%d %b %Y at %H:%M')
         txt = f'Deposit on {current_time} with balance = ${self.accounts[id]['balance']}'
         self.accounts[id]['history'].append(txt)
-        return True
         
-    def withdraw(self, id:str, amount:float) -> bool:
+        return 'deposit successfully'
+        
+    def withdraw(self, id:str, amount:str|float|int) -> str:
+        try:
+            amount = float(amount)
+        except:
+            return 'error: amount must be a number'
+        
         if id not in self.accounts:
-            return False
+            return 'error: id is not valid'
         
         if self.accounts[id]['balance'] < amount:
-            return False
+            return 'error: balance is not enough'
 
         self.accounts[id]['balance'] -= amount
         current_time = datetime.now().strftime('%d %b %Y at %H:%M')
         txt = f'Withdraw on {current_time} with balance = ${self.accounts[id]['balance']}'
         self.accounts[id]['history'].append(txt)
-        return True
         
+        return 'withdraw successfully'
         
+    def transfer(self, id_from:str, id_to:str, amount:str|float|int) -> str:
+        # write full code
        
        
  

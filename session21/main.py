@@ -22,12 +22,29 @@ def main():
                 name = input('name: ')
                 balance = input('balance: ')
                 bs.create_account(name, balance)
+                
             case '4':
-                pass
+                bs.show_all_info(show_history = False)
+                id = input('id: ')
+                amount = input('amount: ')
+                result = bs.deposit(id, amount)
+                print(result)
+                
             case '5':
-                pass
+                bs.show_all_info(show_history = False)
+                id = input('id: ')
+                amount = input('amount: ')
+                result = bs.withdraw(id, amount)
+                print(result)
+                
             case '6':
-                pass
+                bs.show_all_info(show_history = False)
+                id_from = input('id from: ')
+                id_to = input('id to: ')
+                amount = input('amount: ')
+                result = bs.transfer(id_from, id_to, amount)
+                print(result)
+            
             case '7':
                 dm.set(accounts)
                 print('good bye')

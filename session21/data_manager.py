@@ -1,7 +1,7 @@
 import json
 
 class DataManager:
-    def __init__(self, path = 'session20/data.json'):
+    def __init__(self, path = 'session21/data.json'):
         self.path = path
     
     def get(self):
